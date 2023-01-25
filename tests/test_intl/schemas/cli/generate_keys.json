@@ -20,6 +20,21 @@
                         "prompt"
                     ]
                 },
+                "amount": {
+                    "type": "object",
+                    "properties": {
+                        "help": {
+                            "type": "string"
+                        },
+                        "prompt": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "help",
+                        "prompt"
+                    ]
+                },
                 "folder": {
                     "type": "object",
                     "properties": {
