@@ -16,6 +16,7 @@ from staking_deposit.utils.validation import (
     verify_deposit_data_json,
     validate_int_range,
     validate_password_strength,
+    validate_ether_amount_range
 )
 from staking_deposit.utils.constants import (
     MAX_DEPOSIT_AMOUNT,
@@ -74,7 +75,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda num: validate_int_range(num, 1, 2**32),
+                lambda num: validate_ether_amount_range(num),
                 lambda: load_text(['amount', 'prompt'],
                                   func='generate_keys_arguments_decorator')
             ),

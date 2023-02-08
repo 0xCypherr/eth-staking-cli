@@ -29,7 +29,7 @@ def test_new_mnemonic_bls_withdrawal(monkeypatch) -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
-    inputs = ['english', 'english', '1', 'mainnet', 'MyPassword', 'MyPassword',
+    inputs = ['english', 'english', '1', '32', 'mainnet', 'MyPassword', 'MyPassword',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about']
     data = '\n'.join(inputs)
     result = runner.invoke(cli, ['new-mnemonic', '--folder', my_folder_path], input=data)
@@ -69,7 +69,7 @@ def test_new_mnemonic_eth1_address_withdrawal(monkeypatch) -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
-    inputs = ['english', '1', 'mainnet', 'MyPassword', 'MyPassword',
+    inputs = ['english', '1', '32','mainnet', 'MyPassword', 'MyPassword',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about']
     data = '\n'.join(inputs)
     eth1_withdrawal_address = '0x00000000219ab540356cbb839cbe05303d7705fa'
@@ -111,6 +111,7 @@ def test_new_mnemonic_eth1_address_withdrawal(monkeypatch) -> None:
     clean_key_folder(my_folder_path)
 
 
+
 @pytest.mark.asyncio
 async def test_script() -> None:
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
@@ -134,11 +135,13 @@ async def test_script() -> None:
         '--non_interactive',
         'new-mnemonic',
         '--num_validators', '5',
+        '--amount', '32',
         '--mnemonic_language', 'english',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPassword',
         '--folder', my_folder_path,
     ]
+
     proc = await asyncio.create_subprocess_shell(
         ' '.join(cmd_args),
         stdin=asyncio.subprocess.PIPE,
@@ -206,6 +209,7 @@ async def test_script_abbreviated_mnemonic() -> None:
         '--non_interactive',
         'new-mnemonic',
         '--num_validators', '5',
+        '--amount', '32',
         '--mnemonic_language', 'english',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPassword',

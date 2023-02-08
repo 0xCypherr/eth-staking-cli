@@ -23,7 +23,7 @@ def test_existing_mnemonic_bls_withdrawal() -> None:
     inputs = [
         'TREZOR',
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '2', '2', '5', 'mainnet', 'MyPassword', 'MyPassword']
+        '2', '2', '5', '32', 'mainnet', 'MyPassword', 'MyPassword']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
@@ -65,7 +65,7 @@ def test_existing_mnemonic_eth1_address_withdrawal() -> None:
     inputs = [
         'TREZOR',
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '2', '2', '5', 'mainnet', 'MyPassword', 'MyPassword']
+        '2', '2', '5', '32', 'mainnet', 'MyPassword', 'MyPassword']
     data = '\n'.join(inputs)
     eth1_withdrawal_address = '0x00000000219ab540356cbb839cbe05303d7705fa'
     arguments = [
@@ -130,6 +130,7 @@ async def test_script() -> None:
         '--non_interactive',
         'existing-mnemonic',
         '--num_validators', '1',
+        '--amount', '32',
         '--mnemonic="abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"',
         '--mnemonic-password', 'TREZOR',
         '--validator_start_index', '1',
@@ -177,6 +178,7 @@ async def test_script_abbreviated_mnemonic() -> None:
         '--non_interactive',
         'existing-mnemonic',
         '--num_validators', '1',
+        '--amount', '32',
         '--mnemonic="aban aban aban aban aban aban aban aban aban aban aban abou"',
         '--mnemonic-password', 'TREZOR',
         '--validator_start_index', '1',
