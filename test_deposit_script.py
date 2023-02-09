@@ -29,6 +29,7 @@ async def main():
         '--non_interactive',
         'new-mnemonic',
         '--num_validators', '1',
+        '--amount', '32',
         '--mnemonic_language', 'english',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPassword',

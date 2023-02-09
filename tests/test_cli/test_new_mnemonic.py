@@ -29,7 +29,7 @@ def test_new_mnemonic_bls_withdrawal(monkeypatch) -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
-    inputs = ['english', 'english', '1', '32', 'mainnet', 'MyPassword', 'MyPassword',
+    inputs = ['english', 'english', '1', 'mainnet', 'MyPassword', 'MyPassword',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about']
     data = '\n'.join(inputs)
     result = runner.invoke(cli, ['new-mnemonic', '--folder', my_folder_path], input=data)
@@ -69,7 +69,7 @@ def test_new_mnemonic_eth1_address_withdrawal(monkeypatch) -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
-    inputs = ['english', '1', '32','mainnet', 'MyPassword', 'MyPassword',
+    inputs = ['english', '1', 'mainnet', 'MyPassword', 'MyPassword',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about']
     data = '\n'.join(inputs)
     eth1_withdrawal_address = '0x00000000219ab540356cbb839cbe05303d7705fa'
